@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include ('partials/head.ejs') %>
+    <title>Hello</title>
+</head>
+<body class="container">
+<div class="col-md-6 col-md-offset-3">
+    <h1 class="mb-5">Hello <%= name %></h1>
+    <button class="btn btn-success" id="show-metrics">
+        Get some data.
+    </button>
+    <div id="metrics" class="mt-4"></div>
+</div>
+</body>
+<script>
+    $("#show-metrics").click((e) => {
+        e.preventDefault();
+        $.getJSON("/metrics.json", {}, (data) => {
+            const fullDate = `<p><span class="h5">Date:</span> ${data.date} / ${data.month + 1} / ${data.year}</p>`;
+            const time = `<p><span class="h5">Time:</span> ${data.hours}:${data.minutes}:${data.seconds}`;
+
+            $("#metrics").append([fullDate, time]);
+        })
+    })
+</script>
+</html>

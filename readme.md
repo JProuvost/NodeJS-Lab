@@ -1,6 +1,6 @@
 # Lab1 of NodeJS
 
-This packege is the first lab for our lessons of NodeJS.
+This package is the first lab for our lessons of NodeJS.
 This read.me will explain you how to install the package and use it.
 
 ## Installation
